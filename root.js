@@ -13,45 +13,23 @@ class UnsignedOrders extends React.Component {
 			.catch(err => console.error(this.props.url, err.toString()))
 	}
 	
-	signOrder(id) {
-		let ids = [
-		{ 'orderId': id }
-		];
-		console.log(ids)
-		fetch('example.com/api/orders/unsigned', {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json'
-			},
-			body: JSON.stringify(ids)
-		})
-		
-	}
-	
 	componentDidMount() {
 		this.loadData()
 	}
 	
   render() {
-    return <ul>
-			<li className='title'>
-				<span>Sales Order</span>
-				<span>Dealer Name</span>
-				<span>Product</span>
-				<span>Signature</span>
-			</li>
+    return 
       { this.state.data.map((item, i) => {
 				let statusClass = 'sign'
 				if (item.signStatus === 'Out for signature') statusClass += ' sign-complete'
 				let boundClick = this.signOrder.bind(this, i)
-				return <li className='item'>
-					<span>{item.name}</span>
-					<span>{item.password}</span>
-					<span><span className={statusClass} onClick={() => this.signOrder(item.orderID)}>{item.signStatus}</span></span>
-				</li>
+				return <tr className='item'>
+					<td>{item.name}</td>
+					<td>{item.password}</td>
+					<td className={statusClass} onClick={() => this.signOrder(item.orderID)}>{item.signStatus}</td>
+				</tr>
         })
-      }
-    </ul>;
+      };
   }
 }
 			
