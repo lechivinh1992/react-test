@@ -20,17 +20,13 @@ class UnsignedOrders extends React.Component {
   render() {
     return 
       { this.state.data.map((item, i) => {
-				let statusClass = 'sign'
-				if (item.signStatus === 'Out for signature') statusClass += ' sign-complete'
-				let boundClick = this.signOrder.bind(this, i)
-				return <tr className='item'>
-					<td>{item.name}</td>
-					<td>{item.password}</td>
-					<td className={statusClass} onClick={() => this.signOrder(item.orderID)}>{item.signStatus}</td>
-				</tr>
+		return <tr className='item'>
+			<td>{item.name}</td>
+			<td>{item.password}</td>
+		</tr>
         })
       };
   }
 }
 			
-ReactDOM.render(<UnsignedOrders />, document.getElementById('root'));
+ReactDOM.render(<UnsignedOrders />, document.getElementById('user'));
