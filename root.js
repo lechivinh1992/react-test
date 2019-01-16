@@ -1,4 +1,4 @@
-class UnsignedOrders extends React.Component {
+class UnsignedOrders extends React.Component {	
 	constructor(props) {
 		super(props)
 		this.state = { data: [] }
@@ -17,15 +17,15 @@ class UnsignedOrders extends React.Component {
 		this.loadData()
 	}
 	
-  render() {
-    return 
-      { this.state.data.map((item, i) => {
-		return <tr className='item'>
-			<td>{item.name}</td>
-			<td>{item.password}</td>
-		</tr>
-        })
-      };
+	  render() {
+		return <tbody>
+		{this.state.data.map((item, i) => {
+				return <tr key={item.name.toString()} className='item'>
+					<td>{item.name}</td>
+					<td>{item.password}</td>
+				</tr>
+        })}
+		</tbody>;
   }
 }
 			
