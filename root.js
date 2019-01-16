@@ -1,5 +1,4 @@
 class UnsignedOrders extends React.Component {
-	
 	constructor(props) {
 		super(props)
 		this.state = { data: [] }
@@ -14,20 +13,20 @@ class UnsignedOrders extends React.Component {
 			.catch(err => console.error(this.props.url, err.toString()))
 	}
 	
-	// signOrder(id) {
-		// let ids = [
-		// { 'orderId': id }
-		// ];
-		// console.log(ids)
-		// fetch('example.com/api/orders/unsigned', {
-			// method: 'POST',
-			// headers: {
-				// 'Content-Type': 'application/json'
-			// },
-			// body: JSON.stringify(ids)
-		// })
+	signOrder(id) {
+		let ids = [
+		{ 'orderId': id }
+		];
+		console.log(ids)
+		fetch('example.com/api/orders/unsigned', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(ids)
+		})
 		
-	// }
+	}
 	
 	componentDidMount() {
 		this.loadData()
